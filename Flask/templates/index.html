@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        div{
+             width: 100%;
+            height: 100px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<h1>欢迎来到首页</h1>
+<div>
+    <ul>
+        <li>hello</li>
+        <li>abc</li>
+        <li>wolrd</li>
+    </ul>
+</div>
+<!--如果是表单提交，必须添加name属性 -->
+<form action="/register1" method="post">
+    <p><input type="text" name = "username" placeholder="请输入用户名："></p>
+    <p><input type="text" name = "address" placeholder="请输入地址"></p>
+    <p><input type="submit" value="提交"></p>
+</form>
+</body>
+</html>

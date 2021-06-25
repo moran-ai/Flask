@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .inner span {
+            position: absolute;
+            list-style: none;
+            margin-left: 100px;
+        }
+
+        .inner {
+            height: 61px;
+        }
+
+        .inner span li {
+            float: left;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .bg {
+            background-color: red;
+        }
+
+        .div1 {
+            background-color: deepskyblue;
+        }
+
+        .inner1 {
+            float: top;
+            position: relative;
+            height: 40px;
+            top: 1px;
+            background-color: #808080;
+
+        }
+
+        .div2 {
+            position: relative;
+            margin: auto;
+            left: 60px;
+        }
+
+        .div2 li img {
+            width: 200px;
+            height: 300px;
+            float: left;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class='inner'>
+    <span>
+        <li class="bg1">猫眼电影</li>
+        <li>长沙</li>
+        <li class="li2">首页</li>
+        <li class="bg">电影</li>
+        <li class="li2">影院</li>
+        <li class="li2">演出</li>
+        <li class="li2">榜单</li>
+        <li class="li2">热点</li>
+        <li class="li2">商城</li>
+        <li>APP下载</li>
+        <li>搜索</li>
+        <li>个人中心</li>
+    </span>
+</div>
+<div class="inner1">
+
+</div>
+<hr>
+<div class="div1">
+
+</div>
+<div class="div2">
+    <li id="l1"><img src="../static/1.jpg" alt=""></li>
+    <li><img src="../static/2.jpg" alt=""></li>
+    <li><img src="../static/3.jpg" alt=""></li>
+    <li><img src="../static/4.jpg" alt=""></li>
+    <li><img src="../static/5.jpg" alt=""></li>
+    <li><img src="../static/6.jpg" alt=""></li>
+    <li><img src="../static/7.jpg" alt=""></li>
+    <li><img src="../static/8.jpg" alt=""></li>
+    <li><img src="../static/9.jpg" alt=""></li>
+    <li><img src="../static/10.jpg" alt=""></li>
+    <li><img src="../static/11.jpg" alt=""></li>
+    <li><img src="../static/12.jpg" alt=""></li>
+    <li><img src="../static/13.jpg" alt=""></li>
+    <li><img src="../static/14.jpg" alt=""></li>
+    <li><img src="../static/15.jpg" alt=""></li>
+    <li><img src="../static/16.jpg" alt=""></li>
+    <li><img src="../static/17.jpg" alt=""></li>
+    <li><img src="../static/18.jpg" alt=""></li>
+    <li><img src="../static/19.jpg" alt=""></li>
+    <li><img src="../static/20.jpg" alt=""></li>
+    <li><img src="../static/21.jpg" alt=""></li>
+    <li><img src="../static/22.jpg" alt=""></li>
+</div>
+</body>
+<script>
+    $("l1").click(function () {
+        alert("ok");
+    });
+    $(".li2").click(function () {
+        $(this).attr('class', 'bg').siblings().attr({'class': 'li2'});
+    })
+    $(".bg").click(function () {
+        $(this).attr('class', 'bg').siblings().attr({'class': 'li2'});
+    })
+
+
+</script>
+</html>
+

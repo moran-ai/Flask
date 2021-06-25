@@ -1,0 +1,243 @@
+1.安装flask-script
+pip install flask-script
+
+2.使用里面的Manager进行命令的管理和使用
+构建Manager对象
+    from flask_script import Manager
+    # 将manager与app相关联
+    manager = Manager(app=app)   ----> 在启动文件中添加
+
+启动项目：
+    manager.run()
+
+在终端启动:
+    python 项目名 runserver
+
+    指定主机名：
+        python 项目名 runserver - h 主机名
+    指定端口号：
+        python 项目名 runserver - p 端口号
+
+自定义命令：
+    使用装饰器,@manager.command
+    例如：
+        @manager.command
+        def init():
+            """
+            自定义命令
+            :return:
+            """
+            print('初始化')
+python 项目名 自定义命令
+
+3.数据库
+mtv:
+model  模型  数据库
+template  模板
+view  视图
+
+ORM:映射 pip install flask-sqlalchemy 完成映射关系
+类           表
+属性  id,name        字段 id,name
+对象          一条数据
+SQLAlchemy: ORM 映射关系
+flask-sqlalchemy: 基于SQLAlchemy，做了提升，用起来更方便
+安装：
+    pip install pymysql    建立映射的通道
+    pip install flask-sqlalchemy  实现ORM映射
+    pip install flask-migrate   发布命令
+
+步骤：
+1.配置数据库的连接路径:
+    配置文件的修改：
+        SQLALCHEMY_DATABASE_URI = '数据库名+驱动://用户名:密码@主机名:端口号/数据库名'
+        SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:itcast@127.0.0.1:3306/flaskstu'
+
+2.在mysql中创建数据库:
+    编码格式指定为utf-8
+    create database flaskstu charset=utf8;
+
+3.创建包ext:
+    __init__.py文件中添加：
+        from flask_sqlalchemy import SQLAlchemy
+        db = SQLAlchemy()  ----> 必须和app相关联
+
+        关联的两种方式：
+        第一种：
+            app = Flask(__name__)
+            db = SQLAlchemy(app)
+
+        第二种：
+            db = SQLAlchemy()
+            def create_app():
+                app = Flask(__name__)
+                db.init_app(app)
+                return app
+
+4.配置migrate
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+
+在启动文件中配置
+app = create_app() ---->在启动文件中配置
+# 将manager与app相关联
+manager = Manager(app=app) --->在启动文件中配置
+
+# 影响数据库的映射  db为映射关系, 由  db=SQLAlchemy()---->在__init__.py文件中
+migrate = Migrate(app=app, db=db) ------>在启动文件中配置
+# 将命令交给manager管理
+manager.add_command('db', MigrateCommand) ------>在启动文件中配置
+
+5.创建模型
+    models.py
+    模型就是类
+    class User(db.Model):  -----> 映射在mysql中创建User表
+        # 主键primary_key=True
+        id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+        username = db.Column(db.String(15), nullable=False)  # 不能为空 nullable=False
+        password = db.Column(db.String(12), nullable=False)
+        phone = db.Column(db.String(11), unique=True)  # unique=True 唯一
+        # 注册时间  datetime.now 系统默认时间
+        rdatetime = db.Column(db.DateTime, default=datetime.now)
+
+6.使用命令
+    a.在flask启动文件中导入模型
+        from apps.user.models import User
+    b.在终端使用命令：db
+        python 项目名称.py db init  -----> 产生migrations文件夹  一个项目只需要一次
+     *   python 项目名称.py db migrate ----> 在migrations中产生987fbd46ea0d_.py文件 迁移
+     *  python 项目名称.py db upgrade ----> 同步
+        python 项目名称.py db downgrade ----> 降级
+        项目：
+            |--apps
+            |--ext
+            |--migrations python 项目名称.py db init
+                   |--versions 版本文件 夹
+                        |-- 987fbd46ea0d_.py python 项目名称.py db migrate 记录对数据库的修改动作
+
+7.向数据库中添加数据
+模板，视图与模型相结合
+
+    a.创建模型对象
+        user = User()
+
+    b.给对象赋值
+        user.username = username
+        user.password = password
+        user.phone = phone
+
+    c.将user对象添加到session中，类似缓存
+        db.session.add(user)
+
+    d.提交数据到数据库
+        db.session.commit()
+
+8.查询数据
+    a.查询所有数据：
+        模型类.query.all()  ---> select * from 数据表名;
+
+    b.按条件查询: filter_by只支持=，不支持其他运算符
+        模型类.query.filter_by(字段名=值) ----> select * from 数据表名 where 字段名=值;
+        模型类.query.filter_by(字段名=值).first()  查询满足条件的第一条数据
+
+    c.模糊查询   常用   filter模糊查询支持多种运算符
+        模型类.query.filter(模型类.字段名 == '值')
+        模型类.query.filter(模型类.字段名 == '值').all()  查询满足条件的所有数据  ---> 返回list
+        模型类.query.filter(模型类.字段名 == '值').first() 查询满足条件的第一条数据 ---> 返回一个对象
+        模型类.query.filter(模型类.字段名.startswith('xxx')).all() 查询从xxx开头的所有数据
+        模型类.query.filter(模型类.字段名.startswith('xxx')).first() 查询从xxx开头的第一条数据
+        模型类.query.filter(模型类.字段名.endswith('xxx')).all() 查询从xxx结尾的所有数据
+        模型类.query.filter(模型类.字段名.endswith('xxx')).first() 查询从xxx结尾的第一条数据
+        模型类.query.filter(模型类.字段名.contains('xxx')).all() 查询包含xxx的所有数据
+        模型类.query.filter(模型类.字段名.like('xxx%')).all() 查询xxx开头的的所有数据
+        模型类.query.filter(模型类.字段名.like('%xxx')).all() 查询xxx结尾的的所有数据
+        模型类.query.filter(模型类.字段名.like('%xxx%')).all() 查询包含xxx的的所有数据
+
+    多条件查询:
+       a. or查询:
+        导入or_包 from sqlalchemy import or_
+        # 查询xxx开头或者包含xxx的所有数据
+        模型类.query.filter(or_(模型类.字段名.like('xxx%'), 模型类.字段名.contains('xxx'))).all()
+
+       b.and查询：
+        from sqlalchemy import and_
+        # 查询包含xxx并且大于xxx的所有数据   __gt__等效于 >  __lt__等效于 < __ge__等效于>= __le__等效于<=
+        __gt__ __lt__  __ge__ __le__ 通常应用在范围（日期，时间）
+        模型类.query.filter(and_(模型类.字段名.contains('xxx%'), 模型类.字段名 > 'xxxx')).all()
+
+       c.not查询
+        from sqlalchemy import not_
+        查询不包含xxx的所有数据
+        模型类.query.filter(not_(User.username.contains('xxx'))).all()
+
+       d.int_查询
+        查询xxx所指向的用户
+        模型类.query.filter(User.phone.in_(['xxx', 'xxx'])).all()
+
+
+9.排序:
+    1.筛选排序
+        模型类.query.filter(模型类.字段名.方法名('xxx')).order_by('xxx').all()
+        user_list = User.query.filter(User.username.contains('z')).order_by(-User.rdatetime).all()
+    2.对所有的进行排序
+        模型类.query.order_by('xxx').all()
+    注意：
+        order_by(参数)
+    1.直接是字符串：'字段名'  不能是倒序
+    2.填写字段名：模型类.字段名 order_by(模型.字段名)  倒序
+
+
+10.限制 limit + offset的使用
+User.query.order_by('id').limit(2).all()  默认获取前两条数据
+User.query.offset(2).limit(2).all()  跳过两条数据再获取数据
+
+
+总结：
+    1.模型类.query.all()   查询所有
+    2.模型类.query.get(主键)  根据主键查询
+    3.模型类.query.filter_by(字段名=值)
+    4.模型类.query.filter()
+        a.如果检索字符串(Varchar , db.String):
+            模型类.query.filter(模型类.字段名.查询方法('xxx'))
+            查询方法：
+                startswith  以...开始
+                endswith    以...结尾
+                contains   包含...
+                like       查询以...结尾或者以...开始的数据
+                in_   在...里面
+            模型类.query.filter(模型类.字段名 == 'xxx')
+
+        b.如果检索的字段是整形或者日期类型
+        模型类.字段名.__lt__(xxx)  小于
+        模型类.字段名.__gt__(xxx)  大于
+        模型类.字段名.__le__(xxx)  小于等于
+        模型类.字段名.__ge__(xxx)  大于等于
+        模型类.字段名.between(xxx, xxx)  在...之间
+
+        c.多个条件一起检索
+        and_ ,or_ ,not_
+
+        d.排序：order_by()
+        e.获取指定数量数据:limit() + offset()
+
+11.删除
+    a.逻辑删除 （定义数据库表的时候，添加一个字段isdelete,通过此字段控制逻辑删除）
+        id =request.args.get('id')
+        user =  User.query.get(id)
+        user.isdelete = True
+        db.session.commit()
+
+    b.物理删除 (从数据库中彻底删除)
+        id =request.args.get('id')
+        user =  User.query.get(id)
+        db.session.delete(user)
+        db.session.commit()
+
+12.更新
+        id =request.args.get('id')
+        user =  User.query.get(id)
+
+        # 修改对象属性
+        user.username = 'xxxx'
+        user.phone = xxx
+        db.session.commit()

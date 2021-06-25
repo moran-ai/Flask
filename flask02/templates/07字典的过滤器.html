@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字典过滤器</title>
+</head>
+<body>
+{#创建一个字典#}
+{% set student = [
+    {'name': '李四', 'age': 34, 'gender': '男'},
+    {'name': '王五', 'age': 23, 'gender': '男'},
+    {'name': '李梅', 'age': 22, 'gender': '女'}
+] %}
+
+{#遍历字典,按照年龄进行排序#}
+{% for stu in student | sort(attribute='age', reverse=false) %}
+    <li>{{ stu.name }}</li>
+    <li>{{ stu.age }}</li>
+    <li>{{ stu.gender }}</li>
+{% endfor %}
+<hr>
+{#遍历字典，按照性别进行排序#}
+{% for foo in student | groupby('gender') %}
+    <li>{{ foo.grouper }}</li>  {# 组名 #}
+    {% for stu in foo.list %}
+        <li>{{ stu.age }}</li>
+        <li>{{ stu.name }}</li>
+        <li>{{ stu.gender }}</li>
+    {% endfor %}
+
+{% endfor %}
+
+{# 取出字典的中的某列，然后组成一个列表,然后将列表变为一个字符串 #}
+{{ student | map(attribute='name') | join(' - ')}}
+</body>
+</html>

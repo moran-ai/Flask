@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{#重写父类中的title#}
+{% block title %}
+    首页
+{% endblock %}
+
+{% block mycsss %}
+    <style>
+        #middle{
+            background-color: deepskyblue;
+        }
+        .div1{
+            width: 33%;
+            height: 500px;
+            float: left;
+            border: 1px solid red;
+        }
+    </style>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        btn = document.getElementById('btn')
+        btn.onclick=function () {
+            alert('点击')
+        }
+    </script>
+{# link导入外部样式文件 #}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+{% endblock %}
+
+{% block middle %}
+    <div class="div1" id="d1"></div>
+    <div class="div1"></div>
+    <div class="div1"></div>
+    {# 加入图片 #}
+    <img src="{{ url_for('static', filename='images/Scr.jpg')}}" alt="">
+{% endblock %}

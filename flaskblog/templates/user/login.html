@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% block title %}
+    用户登录
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        #container{
+            {#background-image: url("{{ url_for('static', filename='34.jpg') }}");#}
+            height: 500px;
+        }
+    #tab span{
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        cursor: default;
+    }
+    #tips{
+        color: red;
+        font-size: 14px;
+    }
+    .bg{
+        background-image: url("{{ url_for('static', filename='35.jpg') }}");
+        background-size: 1800px 300px;
+    }
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+    <body class="bg">
+    <div>
+    <h1 align="center" style="color: black">
+        用户登录
+    </h1>
+    <div id="tab">
+    <b>
+        <span style="color: black"><b>用户名/密码登录</b></span>  | <span style="color: black"><b>手机验证码登录</b></span>
+    </b>
+    </div>
+{#    <div class="logintab">#}
+{#        <p id="tips">{{ msg }}</p>#}
+{#        #}
+{#    </div>#}
+    <div class="logintab">
+    <p id="tips">{{ msg }}</p>
+    <form class="form-horizontal" method="post" action="{{ url_for('user.login') }}?f=1"  id="container">
+{#    <img src="{{ url_for('static', filename='11.jpg') }}" width="500px" height="500x" style="position: absolute; right: 0; bottom: 0" alt="图片错误">#}
+{#    <img src="{{ url_for('static', filename='12.jpg') }}" width="500px" height="460px" style="position: absolute; left: 0; bottom: 0" alt="图片错误">#}
+{#    <img src="{{ url_for('static', filename='13.jpg') }}" width="500px" height="500px" style="position: absolute; left: 510px; bottom: 0" alt="图片错误">#}
+  <div class="form-group" style="padding-top: 100px;">
+    <label for="inputUsername" class="col-md-2 control-label" >用户名</label>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="inputUsername" placeholder="username" name="username">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="col-md-2 control-label">密码</label>
+    <div class="col-md-2">
+      <input type="password" class="form-control" id="inputPassword" placeholder="password" name="password">
+    </div>
+  </div>
+
+{#        <div class="form-group" >#}
+{#    <label for="inputUsername" class="col-md-2 control-label" >用户名</label>#}
+{#    <div class="col-md-2">#}
+{#      <input type="text" class="form-control" id="inputPhone" placeholder="输入手机号码" name="phone">#}
+{#    </div>#}
+{#  </div>#}
+{#  <div class="form-group">#}
+{#    <label for="inputPassword" class="col-md-2 control-label">密码</label>#}
+{#    <div class="col-md-2">#}
+{#      <input type="text" class="form-control" id="inputCode" placeholder="输入验证码" name="code">#}
+{#    </div>#}
+{#  </div>#}
+{#        <div class="form-group">#}
+{#    <label for="inputPassword" class="col-md-2 control-label">密码</label>#}
+{#    <div class="col-md-2">#}
+{#      <input type="button" class="btn btn-block" id="btnCheck" value="发送验证码"/>#}
+{#    </div>#}
+{#  </div>#}
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary col-md-1">登&nbsp;&nbsp;录</button>
+    </div>
+  </div>
+</form>
+    </div>
+{#  手机号码+验证码登录  #}
+    <div class="logintab">
+    <p id="tips">{{ msg }}</p>
+        <form class="form-horizontal" method="post" action="{{ url_for('user.login') }}?f=2"  id="container">
+{#            <form class="form-horizontal" method="post" action="{{ url_for('user.login') }}?f=1"  id="container">#}
+{#            <img src="{{ url_for('static', filename='11.jpg') }}" width="500px" height="500x" style="position: absolute; right: 0; bottom: 0" alt="图片错误">#}
+{#            <img src="{{ url_for('static', filename='12.jpg') }}" width="500px" height="460px" style="position: absolute; left: 0; bottom: 0" alt="图片错误">#}
+{#            <img src="{{ url_for('static', filename='13.jpg') }}" width="500px" height="500px" style="position: absolute; left: 510px; bottom: 0" alt="图片错误">#}
+         <div class="form-group" >
+{#    <label for="inputUsername" class="col-md-2 control-label" >用户名</label>#}
+             <label for="inputPhone" style="position: absolute; left: 140px; top: 210px">输入手机号</label>
+    <div class="col-md-2" style="padding-top: 100px; position: absolute; left: 200px; top: 100px">
+
+    <input type="text" class="form-control" id="inputPhone" placeholder="输入手机号码" name="phone"><span></span>
+    </div>
+  </div>
+  <div class="form-group">
+{#    <label for="inputPassword" class="col-md-2 control-label">密码</label>#}
+      <label for="inputCode" style="position: absolute; left: 140px; top: 266px">输入验证码</label>
+    <div class="col-md-2" style="position: absolute; left: 200px; top: 260px">
+      <input type="text" class="form-control" id="inputCode" placeholder="输入验证码" name="code">
+    </div>
+  </div>
+        <div class="form-group">
+{#    <label for="inputPassword" class="col-md-2 control-label">密码</label>#}
+    <div class="col-md-2" style="position: absolute; left: 200px; top: 320px">
+      <input type="button" class="btn btn-block" id="btnCheck" value="发送验证码"/>
+    </div>
+  </div>
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10" style="position: absolute; left: 1px; top: 370px">
+      <button type="submit" class="btn btn-primary col-md-1">登&nbsp;&nbsp;录</button>
+    </div>
+  </div>
+            </form>
+    </div>
+    </div>
+    </body>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        $(function () {
+            // 显示隐藏,登录方式
+            $(".logintab").hide();
+            $(".logintab").first().show();
+            $("#tab span").each(function (i) {
+                $(this).click(function () {
+                        $(".logintab").hide();
+                        $(".logintab").eq(i).show();
+                })
+            });
+
+            // 发送验证码
+            $("#btnCheck").click(function () {
+                let phone = $('#inputPhone').val();
+                let span_obj = $('#inputPhone').next('span');
+                span_obj.css({'color':'red', 'font-size':'12px'});
+                if(phone.length == 11){
+                    // 发送ajax请求
+                    $.get('{{ url_for('user.send_msg') }}', {phone: phone}, function (data) {
+                        if(data.code==200){
+                            alert("短信发送成功请查收！");
+                        }else{
+                            alert(data.msg);
+                        }
+                    })
+                }else {
+                    span_obj.css({'color':'red', 'font-size':'12px'});
+                    span_obj.text('手机号码必须为11位');
+                    {#alert('手机号码必须为11位')#}
+                }
+                //if(phone.length!=11){
+                  //  alert('手机号码必须为11位！');
+                 //   span_obj.css({'color': 'red', 'font-size': '12px'});
+                   // span_obj.text('手机号码必须为11位')
+                //}
+            });
+        }
+        )
+    </script>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

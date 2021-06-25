@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #container{
+            border: 1px solid red;
+        }
+
+        #container p{
+            font-size: 20px;
+            color: deepskyblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+<script>
+    $(function(){
+        url = 'http://127.0.0.1:5000/types';
+        $.get(url, function (data){
+            //console.log(data);
+           //  console.log(typeof data); 返回json对象
+            // 遍历json对象
+            for(i=0; i < data.length; i++){
+                // 拿出所有的名字
+                // console.log(data[i].name)
+                // 将数据添加到div标签中  动态创建
+                $('#container').append('<p>'+data[i].name+'</p>')
+            }
+        })
+    })
+</script>
+</html>

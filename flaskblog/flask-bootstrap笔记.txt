@@ -1,0 +1,33 @@
+安装：
+    两者不能共存
+    pip install flask-bootstrap
+    pip install bootstrap-flask
+
+使用flask-bootstrap步骤：
+    1.pip install flask-bootstrap
+    2.进行配置：
+        a.在ext文件夹中,创建bootstrap对象
+            from flask_bootstrap import Bootstrap
+            bootstrap = Bootstrap()
+        b.与app进行关联
+            bootstrap.init_app(app)
+    3.使用flask-bootstrap
+        内置的block:
+            {% block title %}首页{% endblock %}
+
+            {% block navbar %} 导航栏 {% endblock %}
+            {% block content %} 中心内容 {% endblock %}
+            {% block styles %} 样式 {% endblock %}
+            {% block script %}脚本{% endblock %}
+            {% block head %} 头部 {% endblock %}
+            {% block body %} 身体部分 {% endblock %}
+    4. https://v3.bootcss.com/components/#navbar
+        https://flask-bootstrap-zh.readthedocs.io/zh/latest/basic-usage.html#id2
+
+密码加密：
+    注册时使用
+    generate_password_hash(password)  ---> 加密
+
+验证密码：
+    登录时使用  返回值为boolean
+    check_password_hash(passwordHash, password)   --- > 验证密码

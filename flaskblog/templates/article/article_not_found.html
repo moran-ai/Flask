@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        #bggg{
+                background-color: #b3d4fc;
+                background-image: url("{{ url_for('static', filename='35.jpg') }}");
+                background-size: 1800px 300px;  {# 背景图片大小 宽 高 #}
+            }
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+      <p style="color: red; font-size: 20px">
+        {{ msg }}
+    </p>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

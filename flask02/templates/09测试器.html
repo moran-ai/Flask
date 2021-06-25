@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试器</title>
+</head>
+<body>
+{#检查变量是否被定义，也可以使用undefined来进行检查是否进行了定义#}
+{% if name is defined %}
+    <p>Name is: {{ name }}</p>
+{% endif %}
+{% if name is undefined %}
+    <p>Name is not defined</p>
+{% endif %}
+
+{% if '12r83849834093840384093' is phone_test %}
+    <p>是手机号</p>
+{% else %}
+    <p>不是手机号</p>
+{% endif %}
+</body>
+</html>

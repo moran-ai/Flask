@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子模板</title>
+</head>
+<body>
+{% extends 'parent.html' %}
+{% block temp1 %}
+    {{ super() }}
+    <p>子模板中的内容</p>
+{% endblock %}
+</body>
+</html>

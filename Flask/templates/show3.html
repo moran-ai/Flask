@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义过滤器</title>
+</head>
+<body>
+    {{ msg }}
+    <hr>
+    {# 使用自定义的过滤器  使用add_template_filter()函数实现#}
+    {{ msg | replace }}
+    <hr>
+    {# 使用自定义过滤器 使用装饰器实现 @app.template_filter('过滤器名')实现 #}
+    {{ li }}
+    <br>
+    {{ li | listreverse }}
+</body>
+</html>

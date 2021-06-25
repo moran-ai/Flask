@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+    返回首页
+{% endblock %}
+{% block styles %}
+    {{ super() }}
+    <style>
+        #container{
+            padding-top: 30px;
+            width: 1000px;
+            text-align: left;
+            height: 700px;
+            {#background-image: url("1.jpg");#}
+            {#background-image: url("1.jpg");#}
+            {#background-color: paleturquoise;#}
+            {#background-repeat: ;#}
+            {#background-position: center;#}
+            {#background-size: cover;#}
+
+        }
+        #bg{
+            {#padding-top: 10px;#}
+            width: 1500px;
+            {#text-align: left;#}
+            height: 660px;
+            background-image: url("../../static/2.jpg");
+            {#background-repeat: repeat;#}
+            {#background-size: 100%;#}
+    }
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+    <body id="bg">
+    <div>
+{#        <img src="{{ url_for('static', filename='face1.jpg') }}"  width="50px" height="50px" alt="图片错误">#}
+        <h3><a href="{{ url_for('user.index') }}" style="color: hotpink">{{ msg }}</a></h3>
+{#        <img src="{{ url_for('static', filename='31.jpg') }}" width="1100px" height="630px" alt="图片错误">#}
+    </div>
+    </body>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

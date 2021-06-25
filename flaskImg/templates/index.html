@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+
+        .box {
+            width: 100%;
+            height: 50px;
+            background-color: pink;
+            overflow: hidden;
+        }
+
+        .box li {
+            position: relative;
+            float: left;
+            margin: 10px 15px;
+            left: 170px;
+            top: 1px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .box li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .middle {
+            position: absolute;
+            width: 800px;
+            height: 300px;
+            overflow: hidden;
+            margin: auto auto;
+            left: 215px;
+            background-image: url("../static/2.jpg");
+            background-size: 800px 300px;
+        }
+
+        .left {
+            position: absolute;
+            color: black;
+            width: 40px;
+            top: 196px;
+            left: 215px;
+            opacity: .3;
+            cursor: pointer;
+        }
+
+        .right {
+            position: absolute;
+            color: black;
+            width: 40px;
+            top: 196px;
+            right: 214px;
+            opacity: .3;
+            cursor: pointer;
+        }
+
+        .middle ul li img {
+            width: 800px;
+            height: 300px;
+        }
+
+        ul li {
+            position: absolute;
+            left: 800px;
+
+        }
+
+        ol {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            top: 288px;
+            left: 360px;
+        }
+
+        ol li {
+            width: 10px;
+            height: 10px;
+            float: left;
+            border-radius: 50%;
+            text-align: center;
+            background-color: white;
+            margin: 1px 5px;
+        }
+
+        .show {
+            background-color: lightskyblue;
+        }
+
+        .box_ {
+            background-color: lightskyblue;
+            opacity: .8;
+        }
+
+        .left_div {
+            width: 215px;
+            height: 300px;
+            background-color: lightskyblue;
+            opacity: .4;
+        }
+
+        .right_div {
+            position: absolute;
+            width: 214px;
+            height: 300px;
+            background-color: lightskyblue;
+            opacity: .4;
+            right: 0.1px;
+            top: 50px;
+        }
+
+        .content {
+            width: 100%;
+            height: 1000px;
+        }
+
+        .content_div {
+            color: red;
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+            margin: 1px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .content_div img {
+            width: 300px;
+            height: 300px;
+        }
+
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="box">
+    <li id="box_child" class="box_"><a href="">图片</a></li>
+    <li id="box_child">
+        <a href="">图片首页</a>
+    </li>
+    <li id="box_child"><a href="">发现图片</a></li>
+    <li id="box_child"><a href="">我的图片</a></li>
+    <li id="box_child"><a href="">朋友</a></li>
+    <li id="box_child"><a href="">消息</a></li>
+    <li>
+        <input type="text" class="text" placeholder="Search">
+        <button type="submit" id="but">搜索</button>
+    </li>
+    <li id="box_child"><a href="">创作者中心</a></li>
+    <li>
+        <a href="">注册</a>
+    </li>
+    <li>
+        <a href="">登录</a>
+    </li>
+</div>
+<div class="middle">
+    <ul>
+        <li class="img"><img src="../static/2.jpg" class="cur" alt="图片错误"></li>
+        <li class="img"><img src="../static/3.jpg" alt="图片错误"></li>
+    </ul>
+    <ol>
+        <li class="show"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</div>
+<button class="left">&lt;</button>
+<button class="right">&gt;</button>
+<div class="left_div">
+    <iframe src="../static/music/1.mp3" allow="autoplay" style="display: none"></iframe>
+</div>
+<div class="right_div"></div>
+<div class="content">
+    <div class="content_div">
+        <img src="../static/1.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/27.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/13.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/11.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/5.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/6.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/7.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/8.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/9.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/10.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/11.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/12.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/13.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/14.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/15.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/16.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/17.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/18.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/19.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/20.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/21.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/22.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/23.jpg" alt="">
+    </div>
+    <div class="content_div">
+        <img src="../static/24.jpg" alt="">
+    </div>
+</div>
+</body>
+<script>
+    // 定义一个信号量
+    var idx = 0;
+
+    // 左侧按钮绑定单击事件
+    $('.left').click(function () {
+        // 当前展示的图片
+        $("li.img:eq(" + idx + ")").css({'left': 0}).stop(true).animate({'left': -800}, 500);
+        idx++;
+        idx = idx > 1 ? 0 : idx;
+        $("li.img:eq(" + idx + ")").css({'left': 800}).stop(true).animate({'left': 0}, 500);
+        $("ol li:eq(" + idx + ")").addClass('show').siblings().removeClass('show');
+    });
+
+    $('.right').click(function () {
+        // 当前展示的图片
+        $("li.img:eq(" + idx + ")").css({'left': 0}).stop(true).animate({'left': 800});
+        idx--;
+        idx = idx < 0 ? 1 : idx;
+        $("li.img:eq(" + idx + ")").css({'left': -800}).stop(true).animate({'left': 0});
+        $("ol li:eq(" + idx + ")").addClass('show').siblings().removeClass('show');
+    });
+
+
+    setInterval(
+        function () {
+            // 当前展示的图片
+            $("li.img:eq(" + idx + ")").css({'left': 0}).stop(true).animate({'left': -800}, 500);
+            idx++;
+            idx = idx > 1 ? 0 : idx;
+            $("li.img:eq(" + idx + ")").css({'left': 800}).stop(true).animate({'left': 0}, 500);
+            $("ol li:eq(" + idx + ")").addClass('show').siblings().removeClass('show');
+
+        }, 4000
+    );
+
+    $('li#box_child').mouseenter(function () {
+        $(this).addClass('box_').siblings().removeClass('box_');
+    });
+
+    $('#but').click(function () {
+        text = $('.text').val();
+        alert(text);
+    });
+
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试请求方式和请求参数</title>
+    <style>
+        .parent {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <h2>请求方式</h2>
+    <a href="/test1?user_id=100&name=zhangsan&age=10">get请求</a>
+    <h5>POST请求</h5>
+    <form action="/test2" method="post" enctype="multipart/form-data">
+        姓名：<input type="text" name="user_name" placeholder="user_name" id=""><br>
+        年龄：<input type="text" name="user_age" placeholder="user_age" id=""><br>
+        点击上传： <input type="file" name="file" placeholder="请选择文件" id=""><br>
+        <input type="submit" value="提交">
+    </form>
+</div>
+
+</body>
+</html>

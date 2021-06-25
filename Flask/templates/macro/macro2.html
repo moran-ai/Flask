@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宏的使用2</title>
+</head>
+<body>
+{#使用宏，进行宏的导入#}
+{% import 'macro/macro.html' as func%}
+{#调用宏里定义的form m为别名#}
+{{ func.form('/') }}
+
+{#声明变量的两种方式#}
+{#第一种方式：使用set#}
+{% set username='zhang' %}
+{{ username }}
+<br>
+{#第二种方式：使用with#}
+{% with num=100 %}
+    {{ num }}
+{% endwith %}
+</body>
+</html>

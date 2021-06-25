@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户页面</title>
+    <style>
+        p span{
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+    <script src="https://lib.baomitu.com/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<form action="{{ url_for('hello_world') }}" method="post" enctype="multipart/form-data">
+    {{ uform.csrf_token }}  {# 添加csrf保护 #}
+    {# 用户名 #}
+    <p>{{ uform.name.label }}：{{ uform.name }} <span>{% if uform.name.errors %} {{ uform.name.errors.0 }} {% endif %}</span></p>
+    {# 密码 #}
+    <p>{{ uform.password.label }}：{{ uform.password }} <span>{% if uform.password.errors %}{{ uform.password.errors.0 }}{% endif %}</span></p>
+    {# 确认密码 #}
+    <p>{{ uform.confirm_pwd.label }}：{{ uform.confirm_pwd }} <span>{% if uform.confirm_pwd.errors %}{{ uform.confirm_pwd.errors.0 }}{% endif %}</span></p>
+    {# 手机号 #}
+    <p>{{ uform.phone.label }}：{{ uform.phone }} <span>{% if uform.phone.errors %}{{ uform.phone.errors.0 }}{% endif %}</span></p>
+    {# 用户头像 #}
+    <p>{{ uform.icon.label }}：{{ uform.icon }} <span>{% if uform.icon.errors %}{{ uform.icon.errors.0 }}{% endif %}</span></p>
+    {# 验证码 #}
+    <p>{{ uform.recaptcha.label }}：{{ uform.recaptcha }} <img src="{{ url_for('get_image') }}" alt="" id="img"></p>
+    <p><span>{% if uform.recaptcha.errors %}{{ uform.recaptcha.errors.0 }}{% endif %}</span></p>
+    <p><input type="submit" value="提交"></p>
+</form>
+<script>
+    $('#img').click(function (){
+        // 改变验证码 点击改变src的值
+        // Math.random() 产生随机数  点击一次验证码图片重新发送一次请求
+        $(this).attr('src', "{{ url_for('get_image') }}?ran=" + Math.random());
+    })
+</script>
+</body>
+</html>

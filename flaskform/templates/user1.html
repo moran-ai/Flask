@@ -1,0 +1,20 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block content %}
+{#    <form action="{{ url_for("hello_world") }}" method="post" enctype="multipart/form-data">#}
+    {# horizontal_columns=('lg', 5, 8) 表示标签与文本框之间的距离 #}
+        {# 显示uform中的定义所有字段 #}
+        {# horizontal: 水平占比 #}
+        {# quick_form 获取所有的表单  #}
+        <p>{{ wtf.quick_form(uform, button_map={'submit_button': 'primary'}, form_type = 'horizontal', horizontal_columns=('lg', 5, 8))}}</p>
+{#    <p>{{ wtf.form_field(uform.name) }}</p>  {# 取出用户名一栏 #}
+{#    </form>#}
+{% endblock %}

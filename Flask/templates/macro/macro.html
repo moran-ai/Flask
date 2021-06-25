@@ -1,0 +1,13 @@
+{# 定义宏 #}
+{% macro form(action, value="登录", method="post") %}
+    <form action="{{ action }}" method="{{ method }}">
+        <input type="text" name="username" placeholder="用户名">
+        <br>
+        <input type="password" name="password" placeholder="密码">
+        <br>
+        <input type="submit" value="{{ value }}">
+    </form>
+{% endmacro %}
+
+{# 调用宏 #}
+{#{{ form('/') }}#}

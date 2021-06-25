@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>juqery_ajax</title>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="mydiv" style="width: 300px;height: 300px;background-color: pink">
+    <div>
+        <img src="../static/1.jpg" id="img" width="400px" height="600px" alt="图片错误">
+    </div>
+</div>
+<button id="b01">点击修改图片</button>
+</body>
+<script>
+    $('#b01').click(function () {
+        var d = $('#img').attr('src');
+        $.ajax({
+            type: 'GET',
+            url: '/test',
+            // 如果添加了data这个属性,就代表保存数据到服务器
+            data: d,
+            success: function (msg) {
+                alert('哈哈哈, ok', msg);
+                /*
+                $("#mydiv").css({
+                    'width': '400px', 'height': '600px', 'backgroundImage': 'url(../static/2.jpg)',
+                    'backgroundSize': '400px 600px'
+                });
+                 */
+                // 修改图片的属性值
+                $('#img').attr('src', '../static/3.jpg');
+                document.textContent = '修改成功';
+            },
+            error: function (msg) {
+                alert('错误', msg)
+            }
+        });
+    });
+</script>
+</html>

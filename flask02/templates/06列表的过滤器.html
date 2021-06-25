@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{# 定义一个numbers的变量 #}
+{% set numbers = [4,3,5,6,76,7] %}
+{# 取出列表中的值 #}
+<p>{{ numbers | first }}</p> <br>
+{# 获取列表的长度 #}
+<p>{{ numbers| length }}</p><br>
+{# 对列表求和 #}
+<p>{{ numbers|sum }}</p><br>
+{# 对列表进行排序 #}
+<p>{{ numbers|sort }}</p><br>
+{# 列表转为字符串 #}
+<p>{{ numbers | join('-') }}</p>
+</body>
+</html>

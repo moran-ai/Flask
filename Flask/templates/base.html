@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            父模板的title
+        {% endblock %}
+    </title>
+    <style>
+        #head{
+            height: 50px;
+            background-color: crimson;
+        }
+        #head ul{
+            list-style: none;
+            height: 50px;
+        }
+
+        #head ul li{
+            float: left;
+            width: 100px;
+            text-align: center;
+            font-size: 18px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        #middle{
+            height: 900px;
+            background-color: beige;
+        }
+
+        #foot{
+            height: 50px;
+            line-height: 50px;
+            background-color: aqua;
+        }
+    </style>
+    {% block mycsss %}
+
+    {% endblock %}
+</head>
+<body>
+    <div id="head">
+        <ul>
+            <li>首页</li>
+            <li>图书</li>
+            <li>秒杀</li>
+            <li>衣服</li>
+            <li>裤子</li>
+        </ul>
+    </div>
+    <div id="middle">
+        {% block middle  %}
+            <button id="btn">中间</button>
+        {% endblock %}
+    </div>
+    <div id="foot">
+        底部
+    </div>
+{% block myjs %}
+
+{% endblock %}
+</body>
+</html>

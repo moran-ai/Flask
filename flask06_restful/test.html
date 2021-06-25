@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #pe {
+            position: absolute;
+            width: 32px;
+            height: 48px;
+            background: url(4.png);
+            background-position: 0px 96px;
+        }
+    </style>
+</head>
+<body>
+<div id="pe">
+
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var p = document.getElementById('pe')
+    var x = 0
+    var y = 0
+    var w = 0  //
+    var d = 0  // 顶部的距离
+    var move = false
+    setInterval(function () {
+        if (move) return
+        // 向右边移动的距离
+        x -= 32
+        if (x < -96) x = 0
+
+        p.style.backgroundPosition = x + 'px -96px'
+
+        // 向下面移动的距离
+        w += 3
+        if (w > 200) {
+            w = 200
+
+            y -= 32
+            if (y < -96) y = 0
+            //    console.log('y的值是：', y);  // 0, -32, -64, -96
+            p.style.backgroundPosition = y + 'px 3px'
+
+            // d距离顶部的距离
+            d += 3
+            if (d > 200) {
+                d = 200
+                if (x < -96) x = 0
+                p.style.backgroundPosition = x + 'px -48px'
+            }
+            // 当前位置距离顶d部是200px
+            p.style.top = d + 'px';
+
+        }
+        // 200px 距离左边的距离
+        p.style.left = w + 'px';
+
+
+        // 向左边的移动
+        if (d >= 200) {
+            console.log(x);
+            x += 32
+            if (x > 96) x = 0
+            p.style.left = x + 'px'
+        }
+
+    }, 1)
+    p.onclick = function () {
+        move = !move
+    }
+</script>

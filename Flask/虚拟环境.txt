@@ -1,0 +1,11 @@
+虚拟环境:
+    1.pip install virtualenv 虚拟环境包
+    2.pip install virtualenvwrapper-win  虚拟环境管理工具(win系统)
+
+虚拟环境常用命令：
+    1.创建虚拟环境 mkvirtualenv 虚拟环境名称
+    2.查看所有的虚拟环境 lsvirtualenv
+    3.切换到当前虚拟环境目录下 cdvirtualenv
+    4.删除虚拟环境 rmvirtualenv 虚拟环境名称
+    5.进入虚拟环境 workon 虚拟环境名字
+    6.退出虚拟环境 deactivate

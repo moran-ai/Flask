@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+</head>
+<body>
+{# 获取长度 #}
+当前用户共：{{ girls | length }} 人
+<br>
+{# 禁用转译 #}
+{{ msg | safe }}
+<br>
+{# 首字母大写 #}
+{{ n1 | capitalize }}
+<br>
+{# 全部小写 #}
+{{ n1 | lower }}
+<br>
+{# 格式化输出 #}
+{{ '%s is %d' | format('linux', 18) }}
+<br>
+{# 字符串截断 #}
+{{ 'hello world' | truncate(5) |upper }}
+<br>
+{# 字典过滤器操作 #}
+<p>
+    {# 取出字典第一个中所有的值 #}
+    {% for v in users.0.values() %}
+       <p>值:{{ v }}</p>
+    {% endfor %}
+<br>
+    {# 取出字典中第一个的键 #}
+    {% for k in users.0.keys() %}
+        <p>键：{{ k }}</p>
+    {% endfor %}
+<br>
+    {# 既取出键也取出值 #}
+    {% for k,v in users.0.items() %}
+        <p>键： {{ k }}--->值：{{ v }}</p>
+    {% endfor %}
+</p>
+</body>
+</html>

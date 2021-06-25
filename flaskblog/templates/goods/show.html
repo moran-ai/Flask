@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物</title>
+    <script src="https://lib.baomitu.com/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<form action="">
+    <p>
+        <select name="uid">
+            <option value="0">
+                --请选择购物用户--
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+            
+            </option>
+        </select>
+    </p>
+    <p>
+    <table border="1", cellspacing="0" width="50%">
+        <tr>
+            <th>序号</th>
+            <th>商品名</th>
+            <th>价格</th>
+            <th>操作</th>
+        </tr>
+        {% for goods in goods_list %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><a href="{{ url_for('goods.find_user') }}?gid={{ goods.id }}">{{ goods.gname }}</a></td>
+                <td>{{ goods.price }}</td>
+                <td>
+{#                    <button id="btnbuy">购买</button>#}
+                    <input type="button" value="购买" class="btnbuy" tag="{{ goods.id }}">
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    </p>
+
+</form>
+<script>
+{#    点击按钮执行的事件#}
+    $('.btnbuy').click(function () {
+        goods_id = $(this).attr('tag');  {# 获取tag中的内容 #}
+        user_id = $('select[ name="uid"]').val();  {# 获取属性name='uid'的值 #}
+        console.log(goods_id, user_id);  {# 打印goods_id和user_id #}
+        location.href =  '/buy?uid='+user_id+'&gid='+goods_id;  {# 路径拼接 #}
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+安装：
+    pip3 install uwsgi
+
+注意：
+    如果uWSGI安装在root用户下，若要在虚拟环境中运行flask项目，
+    root用户下的python环境安装包必须和虚拟环境中的安装包相同，否则在虚拟环境中运行flask项目会有安装包不
+    存在的错误
+
+    如果uWSGI安装在虚拟环境中，虚拟环境中的安装包和项目中的安装包相同即可运行flask项目
+
+在要运行的flask项目中新建uwsgi.ini文件
+将项目和uWSGI结合起来
+[uwsgi]
+# 子目录
+chdir = /home/admin/flaskblog  # 项目路径
+# 主线程
+master = True
+py-autoreload = True
+enable-threads = True
+# 服务名称：app.run()
+app = app
+# 服务文件：test_server.py
+wsgi-file = app.py  # 项目的启动文件
+# 进程
+process = 4
+# 线程
+threads = 2
+# permissions for the socket file
+# socket = /home/admin/flaskblog/%n.sock
+chmod-socket = 666
+# 绑定服务 IP
+http = 0.0.0.0:5678
+# 调用服务
+callable = app
+# 缓存
+buffer-size = 5536
+# 进程号
+pidfile = uwsgi.pid
+# 日志
+daemonize = uwsgi.log
+
+开启uWSGI
+uwsgi --ini uwsgi.ini
+
+关闭uWSGI
+uwsgi --stop uwsgi.pid
+

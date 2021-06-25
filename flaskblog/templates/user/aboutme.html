@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    关于我
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+    #container{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+    <div id="container">
+    <span style="text-align: center"><h1>关于我</h1></span>
+        <br>
+        <form action="{{ url_for('user.about_me') }}" method="post">
+            <p style="">
+                <textarea name="content" cols="70" rows="10" style="font-size: 15px">
+
+                </textarea>
+            </p>
+            <p>
+                <button type="submit" class="btn btn-primary">更改我的</button>
+            </p>
+        </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

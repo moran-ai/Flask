@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示用户文章</title>
+    <style>
+        #container{
+            border: 1px solid brown;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+{% for article in articles %}
+    <div id="container">
+        <p>
+{#        根据文章找作者#}
+            <h3>{{ article.title }}</h3>
+            <br>
+            作者：{{ article.user.username }}
+            <br>
+            发表时间：{{ article.pdatetime }}
+        </p>
+        <p>
+            {{ article.content }}
+        </p>
+    </div>
+{% endfor %}
+
+</body>
+</html>

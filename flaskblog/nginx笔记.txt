@@ -1,0 +1,96 @@
+nginx特点：
+    1.轻量级
+    2.并发能力强
+    3.高度模块化
+    4.负载均衡
+    5.反向代理
+
+nginx控制：
+    启动：
+        nginx [-c configpath] 默认路径 :/etc/nginx/nginx:conf
+
+    版本信息查看：
+        nginx -v
+        nginx -V
+
+    查看进程：
+        ps -ef | grep nginx
+        ps -aux | grep nginx
+
+    控制nginx:
+        nginx -s signal
+            stop  快速关闭
+            quit  优雅关闭
+            reload 重新加载配置
+
+    通过系统管理
+        systemctfl status nginx 查看nginx状态
+        systemctfl start nginx 启动nginx服务
+        systemctfl stop nginx 关闭nginx服务
+        systemctfl  enable nginx  设置开机自启
+        systemctfl disable nginx 禁止开机自启
+
+        MIME:多用途互联网邮件扩展类型
+
+配置文件中的参数
+    user nginx; worke进程运行的用户和组
+    worker_processes  1; 指定nginx开启的子进程数
+    err_log  xxx level ;  用来定义全局错误日志，通常放在var中，level有debug,info,notice,warn,error, crit
+    pid xxx; 指定进程id存储文件的位置
+
+    events 指定工作模式以及连接上限
+    events{
+        use epoll;
+        worker_connections 1024;   1024个连接
+    }
+
+    use指定nginx的工作模式
+    epoll 高效工作模式  linux
+    kqueue  高效工作模式  bsd
+    poll 标准模式
+    select 标准模式
+
+    worker_connections:定义nginx每个进程的最大连接数
+    正向代理：连接数*进程数
+    反向代理：连接数*进程数/4
+    linux系统限制最多能同时打开65535个文件，默认上限是65535,可解除 ulimit -n 65535
+
+    http:
+         最核心的模块，主要负责http服务器相关配置，包含server,upstram子模块
+    include mime.types: 设置文件的mime类型
+    include xxxconfig: 包含其他配置文件，分开规划解耦
+    default_type xxx: 设置默认类型为二进制流，文件类型未知时就会使用默认
+    log_format; 设置日志格式
+    sendfile 设置高效文件传输模式
+    keepalive_timeout: 设置客户端连接活跃超时
+    gzip  gzip压缩
+
+    server:
+        用来指定虚拟主机
+    listen 80; 指定虚拟主机监听的端口，默认是80
+    server_name localhost; 指定ip地址或域名，多个域名使用空格隔开
+    charset utf-8; 指定网页的默认编码格式
+    error_page 500 502/50x.html 指定错误页面
+    access_log xxx main;    指定虚拟主机的访问日志存放路径
+    error_log xxx main;     指定虚拟主机的错误日志存放路径
+    root xxx;   指定这个虚拟主机的根目录
+    index xxx   指定默认首页
+
+    location
+        核心中的核心，以后的配置都在这
+        主要功能：定位url,解析url, 支持正则匹配，还能支持条件,实现动静分离
+    语法
+        location [modifier] url{
+                ...
+        }
+
+    modifier修饰符
+            = 使用精确匹配并终止搜索
+            ~ 区分大小写的正则表达式
+            ~* 不区分大小写的正则表达式
+            ^~  最佳匹配，不是正则匹配，通常用来匹配目录
+
+    常用指令
+        alias 别名， 定义location的其他名字，在文件系统中能够找到，如果location指定定了正则表达式
+        alias将会引用正则表达式中的捕获，alias替代lication中匹配的部分，没有匹配的部分将会在文件系统中搜索
+
