@@ -347,3 +347,6 @@ git remote add origin https://github.com/moran-ai/Flask.git
 git push -u origin main
 ```
 
+缓存超出范围错误
+
+https://blog.csdn.net/qq_34466755/article/details/113748527
