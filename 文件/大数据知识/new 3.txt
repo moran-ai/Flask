@@ -1,0 +1,23 @@
+图的缓存:
+导入相应的包：
+import org.apache.spark.storage.StorageLevel
+
+图的缓存和释放缓存主要方法：
+* cache() 缓存整个图 
+* persist(newLevel:StorageLevel = StorageLevel.MEMORY_ONLY) 缓存整个图，并指定存储 级别 
+* unpersistVertices(blocking: Boolean = true) 释放顶点缓存
+* edges.unpersist(blocking= true) 释放边缓存
+
+对于已经完成计算无需再使用的缓存内容可以进行释放，在迭代过程中无需再使用的缓存也可以释放。
+释 放缓存方法有如下3种
+* Graph.unpersist(blocking = true)：释放整个图缓存
+* Graph.unpersistVertices(blocking = true)：释放内存中缓存的vertices。
+* Graph.edges.unpersist(blocking = true)：释放边缓存，使用对边进行修改，但会重复使用点进 
+
+图数据查询：
+* numVertices 查询顶点个数
+* numEdges 查询边数 
+* degrees(in/out) 查询度数
+* vertices 查询顶点信息 
+* edges 查询边信息
+

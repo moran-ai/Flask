@@ -1,0 +1,12 @@
+图的创建与存储：
+导入相应的包：
+* import org.apache.spark.rdd.RDD
+* import org.apache.spark.graphx._
+* import org.apache.spark.rdd.RDD
+
+方法一：
+根据有属性的顶点和边构建图（Graph(vertices,edges,defaultVertexAttr)）
+vertices:RDD[(VertexId,VD)]：“顶点”类型的RDD，其中VertexId为顶点ID（必须为Long类型 ），VD为顶点属性信息。
+edges:RDD[Edge[ED]]：“边”类型的RDD，Edge类包含srcId（起点，Long类型）、dstId（目 标点，Long类型），attr（边属性）三个部分。
+defaultVertexAttr：一个固定的顶点信息，用于当数据中出现顶点缺失时使用。
+

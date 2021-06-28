@@ -1,0 +1,47 @@
+spark的核心：其实就是一种新型的大数据计算框架。可以基于Hadoop上存储的大数据进行计算（HDFS,Hive)
+
+spark替代Hadoop的一部分，也就是Hadoop的计算框架，MapReduce, Hive的查询引擎。
+
+spark本身是不提供大数据的存储的。
+
+Spark包含的常见的大数据计算框架:
+Spark Core 用于离散计算 
+Spark SQL 用于交互式查询
+Spark Streaming用于实时流式计算
+Spark MLlib 用于机器学习
+Spark Graphx 用于图计算
+
+spark除了一站式的特点之外，一个重要的特点就是基于内存进行运算。
+
+Scala解释器的使用：
+1. 计算表达式：
+在Scala>命令行内，输入Scala代码，解释器会直接返回结果给你。如果没指定变量来存放这个值，那么值的默认名称为res，而且会显示结果的数据类型。
+比如：int、Double、java.lang.String等
+例如：输入 1+ 1， 会得到res0: int=2
+
+2.内置变量：在后面可以继续使用res这个变量，以及它存放的值。
+例如:2.0 * res.0,  返回 res1:Double = 4.0
+例如:'Hi' + res.0, 返回res2:String=Hi,2
+
+3.自动补全：在scala>命令行内, 可以使用tab键自动补全。
+
+
+声明变量：
+1.声明val变量：可以用声明val变量来存放表达式的计算结果。
+例如：val result = 1+ 1
+后续这些变量可以再被使用，例如：2 * result
+变量一旦声明，值就无法改变。
+
+2.声明var变量：如果要声明值可以改变的的引用，可以使用var变量。
+例如：var result = 2, result=1
+但在Scala程序中建议使用val，也就是常量，在大型复杂系统中，需要大量的网络传输数据，使用var，可能会担心值被错误的更改。
+
+3.指定类型：无论声明val变量，还是var变量，都可以手动指定其类型，如果不指定的话，Scala会自动根据值，进行类型的判断。
+例如：val name:String=null val name:Any='leo'
+
+4.声明多个变量：可以将多个变量放在一起声明。
+例如：val name1,name2:String = null
+例如：val num1,num2 = 100
+
+
+

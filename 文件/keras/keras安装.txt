@@ -1,0 +1,12 @@
+﻿keras 安装
+* keras官网：https://keras.io/
+* 直接在cmd中pip install keras （在有CPU的情况下)
+* 在安装keras之前,先得安装一个后端框架,建议用tensorflow ，也是直接在cmd中pip install tensorflow
+* 验证keras是否安装成功，在cmd中进入python,输入import keras,如果出现Using TensorFlow backend.,则证明安装成功。
+* 查看keras与tensorflow的版本：
+import keras 
+print(keras.__version__)
+
+import tensorflow
+print(tensorflow.__version__)
+

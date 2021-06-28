@@ -1,0 +1,46 @@
+sequential  英[s??kwen?l] 美[s??kwen?l]
+adj . 按次序的,顺序的，序列的
+
+layers 英[?le??z]  美[lerz]
+n . 层；表层；层次；阶层
+v . 把.....分层堆放
+
+dense
+英 [dens]  美 [d?ns] 
+adj .密集的；稠密的；浓密的；浓厚的；愚钝的
+比较级：denser
+最高级：densest
+
+activation
+英 [??kt?'ve??n]  美 [??kt?'ve??n] 
+n.活化；激活；活化作用；致活
+
+units
+英 ['ju?n?ts] 美 ['ju?n?ts] 
+n.单位
+名词unit的复数形式
+
+batch
+英 [b?t?] 美 [b?t?] 
+n.一批；一炉；一次所制之量
+v.分批处理
+
+epochs
+时代（epoch的复数形式）
+时期（epoch的复数形式）
+迭代次数
+
+tensor
+英 [?tens?(r)]   美 [?t?ns?, -?s?r] 
+n.张肌，张量
+
+optimizer
+英 ['ɑ:pt?ma?z?r] 美 ['ɑpt?ma?z?r] 
+
+释义[计] 优化程序； [化] 最优控制，最优控制器；
+
+metrics
+英 ['metr?ks]  美 ['metr?ks]
+
+n.韵律学，作诗法；
+

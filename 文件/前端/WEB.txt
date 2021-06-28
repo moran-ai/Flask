@@ -1,0 +1,39 @@
+import os
+import json
+from flask import Flask, request, redirect
+
+app = Flask(__name__, static_url_path='/static')
+
+@app.route('/', methods=['GET'])
+def index():
+    return app.send_static_file('image.html') # send_static_file 将静态文件从静态文件夹发送到浏览器
+
+@app.route('/upload/<path>', methods=['GET'])
+def get_file(path):
+    path = os.path.join('upload', path)
+    return app.send_static_file(path)
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    if 'file' not in request.files:
+        return redirect('/')
+
+    f = request.files['file']
+
+@app.route('/download/', methods=['GET'])
+def download_file():
+    path = './static/predict/'
+    files = os.listdir(path)
+    fileList = {}
+    for file in files:
+        fileList[file] = []
+        file_d = os.path.join(path, file)
+        if os.path.isdir(file_d):
+            my_files = os.listdir(file_d)
+            for file1 in my_files:
+                file1_d = os.path.join(file, file1)
+                fileList[file].append({"filename": file1, "path": path + file1_d})
+    return json.dumps(fileList)
+
+if __name__ == '__main__':
+    app.run(debug=True)

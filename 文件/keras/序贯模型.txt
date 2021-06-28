@@ -1,0 +1,18 @@
+﻿序贯（Sequential)模型
+* 可以通过向Sequential传递一个layer的list来构造模型，也可以通过add将layer一个个加入模型。
+
+* Sequential的第一层需要接收一个关于输入数据shape的参数，后面的各个层可以自动推导出中间数据的shape。
+这个参数可以由input_shape(),input_dim(),input_length()等方法传递，
+还可以通过传递batch_size参数来指定一个固定大小的batch。
+注意，input_dim=x意味着传入一个x维向量，也就等于一个一阶张量，即input_shape=(x,)
+
+* compile()用于编译模型，他接收三个参数：
+1.优化器（optimizer):已预定的优化器名或一个Optimizer类对象，模型采用的优化方式。
+2.损失函数（loss):已预定的损失函数名或一个损失函数，模型试图最小化的目标函数。
+3.指数列表（metrics）：已预定义指标的名字或用户定制的函数，用于评估模型性能。
+
+* fit()用于训练模型，需要传入numpy数组形式的输入数据和标签，可以指定epochs和batch_size等参数.
+
+* 处理多分类问题时使用keras.utils.to_categorical()进行独热编码.
+
+* Sequential Model API

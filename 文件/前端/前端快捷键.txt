@@ -1,0 +1,25 @@
+pycharm和前端快捷键
+ctrl+enter             一次 中途换行
+
+ctrl + enter           二次 运行代码，结果以命令行格式显示
+
+ctrl + enter           在前端中只执行中途换行
+
+shift + enter         在pycharm和前端中只执行换到下一行
+
+ctrl +N                 在pycharm和前端中只执行新建命令
+
+ctrl +F4               在pycharm和前端中只执行关闭命令
+
+ctrl + shift  + F4   在pycharm和前端中执行全部关闭
+
+alt+ enter  查看函数，库， 类属性
+
+ctrl +  D 复制光标所在行内容并自动换行
+
+Alt + 箭头（左右） 可切换到另一个编辑程序.
+
+
+
+
+

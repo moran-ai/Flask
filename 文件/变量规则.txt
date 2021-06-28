@@ -1,0 +1,13 @@
+路由
+现代 Web 应用的 URL 十分优雅，易于人们辨识记忆，这一点对于那些面向使用低速网络连接移动设备访问的应用特别有用。
+如果可以不访问索引页，而是直接访问想要的那个页面。
+
+实例
+@app.route('/')
+def index():
+    return 'Index Page'
+
+@app.route('/hello')
+def hello():
+    return 'Hello World'
+

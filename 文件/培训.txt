@@ -1,0 +1,26 @@
+vmware Workstation 配置
+1.打开虚拟机
+2.点击编辑，进入虚拟网络编辑器
+3.设置为NAT
+4. 
+
+2019.7.7
+
+1.资源准备：各种软件(Vmware, Xshell, Xftp)
+  虚拟机资源：（node200/node201/node202/node203)
+
+2.软件使用：Xshell, Xftp
+
+3.Vmware介绍（宿主机/虚拟机/配置网络）
+
+4.基础的计算机知识（ping (baidu), ipconfig, 内存/cpu/硬盘/系统）
+
+
+5.Linux简介（mac/windows)
+
+
+6.Xshell连接:四个虚拟机实战
+
+
+2019.7.8
+1.Linu

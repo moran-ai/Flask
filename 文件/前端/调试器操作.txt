@@ -1,0 +1,20 @@
+调试器操作
+
+*debug - 是否开启调试模式并捕获异常
+*use_debugger - 是否使用内部的 Flask 调试器
+*use_reloader - 是否在异常时重新载入并创建子进程
+
+debug 必须为 True （即异常必须被捕获）来允许其它的两个选项设置为任何值。
+如果你使用 Aptana/Eclipse 来调试，你会需要把 use_debugger 和 user_reloader 都设置为 False 。
+
+有两种途径来启用调试模式。一种是直接在应用对象上设置:
+app.debug = True
+app.run(）
+
+另一种是作为 run 方法的一个参数传入:
+app.run(debug=True)
+
+注意
+尽管交互式调试器在允许 fork 的环境中无法正常使用（也即在生产服务器上正常使用几乎是不可能的），但它依然允许执行任意代码。
+这使它成为一个巨大的安全隐患，因此它 绝对不能用于生产环境 。
+

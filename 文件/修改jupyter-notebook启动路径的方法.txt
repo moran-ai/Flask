@@ -1,0 +1,19 @@
+﻿修改 jupyter notebook 启动工作路径的方法
+     Windows下jupyter notebook默认的启动路径就是当前cmd启动jupyter 的路径：
+	 C:\Users\用户名>jupyter notebook，此时jupyter 的启动工作路径就是在  c:\Users\用户名，当更改盘符或者文件夹路径时 jupyter 的启动也会随着改变，
+	 为了使每次都在一个指定的工作路径下打开，可按如下设置：
+	 1.打开命令行（ win+R，输入cmd,然后按回车键 ),输入：
+	 jupyter notebook --generate-config
+	 
+	 2.打开 jupyter_notebook_config.py 文件，找到
+	 1 ## The directory to use for notebooks and kernels.
+         2 #c.NotebookApp.notebook_dir = '' 
+	 将要指定的路径填入 #c.NotebookApp.notebook_dir = '   ' 中的 '   ' 中即可，同时注意将 #c 中的 # 删去，：
+	 例如：1 c.NotebookApp.notebook_dir = 'D:\jupyterProject'
+	 
+	 3.保存，在命令行中再次输入 jupyter notebook 指令即可在指定的文件夹下启动
+
+
+
+
+在cmd中输入：ipython profile create ，可以找到关于jupyter的配置文件的位置 

@@ -1,0 +1,55 @@
+优化器optimizers
+
+优化器是编译keras模型必要的两个参数之一
+可以在调用model.compile()之前初始化一个优化器对象，然后传入该函数
+可以在调用model.compile()时传递一个预定义优化器名
+
+所有优化器都可用的参数
+参数clipnorm和clipvalue是所有优化器都可以使用的参数,用于对梯度进行裁剪
+
+SGD
+keras.optimizers.SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False)
+随机梯度下降法，支持动量参数，支持学习衰减率，支持Nesterov动量
+参数： 
+    lr：大或等于0的浮点数，学习率
+
+    momentum：大或等于0的浮点数，动量参数
+
+    decay：大或等于0的浮点数，每次更新后的学习率衰减值
+
+    nesterov：布尔值，确定是否使用Nesterov动量
+
+
+RMSprop
+keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
+该优化器通常是面对递归神经网络时的一个良好选择
+参数：
+
+    lr：大或等于0的浮点数，学习率
+
+    rho：大或等于0的浮点数
+
+    epsilon：大或等于0的小浮点数，防止除0错误
+
+
+Adagrad
+keras.optimizers.Adagrad(lr=0.01, epsilon=1e-06)
+建议保持优化器的默认参数不变
+参数：
+     
+    lr：大或等于0的浮点数，学习率
+
+    epsilon：大或等于0的小浮点数，防止除0错误
+
+
+Adadelta
+建议保持优化器的默认参数不变
+keras.optimizers.Adadelta(lr=1.0, rho=0.95, epsilon=1e-06)
+参数：
+     
+    lr：大或等于0的浮点数，学习率
+
+    rho：大或等于0的浮点数
+
+    epsilon：大或等于0的小浮点数，防止除0错误
+
